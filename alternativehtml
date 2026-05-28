@@ -420,7 +420,7 @@ footer{background:var(--bark);color:var(--stone);padding:3rem 5rem;display:flex;
 
 <footer>
   <span class="footer-logo">Salt &amp; Lux</span>
-  <span>© 2025 Salt &amp; Lux · Cheyenne, WY</span>
+  <span>© 2026 Salt &amp; Lux · Cheyenne, WY</span>
   <a href="mailto:saltandlux@proton.me" style="color:var(--stone);text-decoration:none">saltandlux@proton.me</a>
 </footer>
 

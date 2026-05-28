@@ -133,7 +133,9 @@ footer{background:var(--bark);color:var(--stone);padding:3rem 5rem;display:flex;
 <body>
 
 <nav>
-  <a class="nav-logo" href="#hero">Salt &amp; Lux</a>
+  <a class="nav-logo" href="#hero">
+  <img src="index_files/saltandluxlogo.png" alt="Salt &amp; Lux" style="height:38px;width:auto;display:block;">
+</a>
   <ul class="nav-links">
     <li><a href="#commitment">About</a></li>
     <li><a href="#services">Services</a></li>

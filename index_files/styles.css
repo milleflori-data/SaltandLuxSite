@@ -18,6 +18,13 @@
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 6rem;
+
+  --text-xs: 0.85rem;
+  --text-sm: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 2rem;
+  --text-xl: 3rem;
+  --text-hero: clamp(2.5rem, 5vw, 5rem);
 }
 
 * {
@@ -31,8 +38,13 @@ body {
   background: linear-gradient(135deg, var(--sea2), var(--bg1), var(--sand));
   color: var(--ink);
   overflow-x:hidden;
+  line-height: 1.6;
+}
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /* =========================
    GLASS NAV
 ========================= */
@@ -179,9 +191,10 @@ body {
 }
 
 .hero-content h1 {
-  font-size:clamp(2.5rem,5vw,5rem);
-  font-family:"Cormorant Garamond";
-  z-index: 2;
+  font-size: var(--text-hero);
+  font-family:"Cormorant Garamond", serif;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 .hero-content span {
@@ -203,7 +216,7 @@ body {
   background: radial-gradient(circle at 30% 20%,
     rgba(127,214,204,.35),
     transparent 60%);
-  opacity: 0.6;
+  opacity: 0.4;
   animation: driftLight 20s ease-in-out infinite;
   filter: blur(40px);
   z-index: 1; 
@@ -215,7 +228,9 @@ body {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  z-ndex: 1;
+  z-index: 1;
+  opacity: 0.35;
+  filter: blur(30px);
 
   top: 20%;
   right: 10%;
@@ -271,7 +286,9 @@ body {
 ========================= */
 
 .section {
-  padding:var(--space-xl) var(--space-md);
+  padding: var(--space-xl) var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .glass-section {
@@ -279,12 +296,19 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.section-title {
+  font-size: var(--text-lg);
+  font-family: "Cormorant Garamond";
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
 /* =========================
    CARDS
 ========================= */
 
 .glass-card {
-  background: rgba(255,255,255,.14);
+  background: rgba(255,255,255,.12);
   border: 1px solid rgba(255,255,255,.3);
   backdrop-filter: blur(16px);
 
@@ -297,6 +321,19 @@ body {
   transform: translateY(-6px);
 }
 
+.card--focus {
+  background: rgba(255,255,255,.18);
+}
+
+.card--cta {
+  background: linear-gradient(
+    135deg,
+    rgba(127,214,204,.25),
+    rgba(255,255,255,.18)
+  );
+
+  border: 1px solid rgba(127,214,204,.35);
+}
 /* shimmer pass */
 .glass-card::after {
   content:"";
@@ -315,14 +352,15 @@ body {
 
   transform: skewX(-20deg);
 
-  animation: shimmer 12s ease-in-out infinite;
-  opacity: 0.35;
+  animation: shimmer 14s ease-in-out infinite;
+  opacity: 0.25;
 }
 @keyframes shimmer {
   0% { left:-150%; opacity:0; }
   50% { opacity:0.4; }
   100% { left:150%; opacity:0; }
 }
+
 
 /* =========================
    GRID
@@ -486,6 +524,10 @@ body {
 
 @media (max-width: 768px) {
 
+  .section {
+    padding: 4rem 1.2rem;
+  }
+   
   .hero-glass-orb {
     display: none;
   }
@@ -503,6 +545,7 @@ body {
     flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.8rem;
+    backdrop-filter: blur(10px);
   }
 
   .glass-card {

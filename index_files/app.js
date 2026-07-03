@@ -1,114 +1,132 @@
 // =========================
-// SALT & LUX INTERACTIONS
+// SALT & LUX — INTERACTION ENGINE
 // =========================
 
-// Reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
+document.addEventListener("DOMContentLoaded", () => {
+
+  // =========================
+  // 1. REVEAL SYSTEM
+  // =========================
+
+  const revealElements = document.querySelectorAll(".reveal");
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target); // performance improvement
+      }
+    });
+  }, {
+    threshold: 0.15
   });
-});
 
-document.querySelectorAll(".reveal")
-  .forEach(el => observer.observe(el));
+  revealElements.forEach(el => revealObserver.observe(el));
 
 
-// Smooth anchor scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener("click", e => {
-    e.preventDefault();
-    document.querySelector(a.getAttribute("href"))
-      ?.scrollIntoView({ behavior: "smooth" });
-  });
-});
+  // =========================
+  // 2. SMOOTH SCROLL (SINGLE SOURCE OF TRUTH)
+  // =========================
 
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
 
-// Nav glow on scroll
-window.addEventListener("scroll", () => {
-  const nav = document.querySelector(".glass-nav");
-  if (window.scrollY > 50) {
-    nav.style.background = "rgba(255,255,255,.25)";
-  } else {
-    nav.style.background = "rgba(255,255,255,.15)";
-  }
-});
+      const target = document.querySelector(anchor.getAttribute("href"));
+      if (!target) return;
 
-const reveals = document.querySelectorAll(".reveal");
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, {
-  threshold: 0.15
-});
-
-reveals.forEach(el => observer.observe(el));
-
-const slider = document.querySelector(".slider");
-const after = document.querySelector(".after");
-
-if (slider && after) {
-  slider.addEventListener("input", (e) => {
-    after.style.width = e.target.value + "%";
-  });
-}
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const target = document.querySelector(this.getAttribute("href"));
-
-    if (target) {
       target.scrollIntoView({
         behavior: "smooth",
         block: "start"
       });
+    });
+  });
+
+
+  // =========================
+  // 3. NAV SCROLL STATE + GLASS INTENSITY
+  // =========================
+
+  const nav = document.querySelector(".ribbon-nav");
+  const navLinks = document.querySelectorAll(".ribbon-btn");
+  const sections = document.querySelectorAll("section");
+
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+
+    // --- NAV BACKGROUND SHIFT ---
+    if (nav) {
+      if (scrollY > 50) {
+        nav.style.background = "rgba(255,255,255,.25)";
+      } else {
+        nav.style.background = "rgba(252,252,250,.55)";
+      }
     }
-  });
-});
 
-document.querySelectorAll(".glass-card").forEach(card => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    // --- ACTIVE SECTION DETECTION ---
+    let currentSection = "";
 
-    const rotateX = ((y / rect.height) - 0.5) * -6;
-    const rotateY = ((x / rect.width) - 0.5) * 6;
+    sections.forEach(section => {
+      const top = section.offsetTop - 120;
+      const bottom = top + section.offsetHeight;
 
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-  });
+      if (scrollY >= top && scrollY < bottom) {
+        currentSection = section.getAttribute("id");
+      }
+    });
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
-  });
-});
+    navLinks.forEach(link => {
+      link.classList.remove("active");
 
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".ribbon-btn");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const top = section.offsetTop - 120;
-    const height = section.clientHeight;
-
-    if (pageYOffset >= top && pageYOffset < top + height) {
-      current = section.getAttribute("id");
-    }
+      if (link.getAttribute("href") === `#${currentSection}`) {
+        link.classList.add("active");
+      }
+    });
   });
 
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
+
+  // =========================
+  // 4. BEFORE / AFTER SLIDER
+  // =========================
+
+  const slider = document.querySelector(".slider");
+  const after = document.querySelector(".after");
+
+  if (slider && after) {
+    slider.addEventListener("input", (e) => {
+      after.style.width = `${e.target.value}%`;
+    });
+  }
+
+
+  // =========================
+  // 5. GLASS CARD MICRO-INTERACTION (DESKTOP ONLY)
+  // =========================
+
+  const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+  const cards = document.querySelectorAll(".glass-card");
+
+  if (!isTouchDevice) {
+    cards.forEach(card => {
+
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const rotateX = ((y / rect.height) - 0.5) * -6;
+        const rotateY = ((x / rect.width) - 0.5) * 6;
+
+        card.style.transform =
+          `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
+
+    });
+  }
+
 });

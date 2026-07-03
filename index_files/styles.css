@@ -281,6 +281,56 @@ body {
 }
 
 /* =========================
+   SERVICES GRID (UPGRADED)
+========================= */
+
+.grid .glass-card {
+  padding: 2.5rem 2rem;
+  text-align: center;
+
+  font-size: 1.05rem;
+  font-weight: 500;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.22),
+    rgba(223,248,242,.14)
+  );
+
+  border: 1px solid rgba(255,255,255,.45);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.6);
+
+  transition: all .4s ease;
+  cursor: default;
+}
+
+/* hover upgrade */
+.grid .glass-card:hover {
+  transform: translateY(-10px) scale(1.03);
+
+  box-shadow:
+    0 35px 80px rgba(0,0,0,.12),
+    inset 0 1px 0 rgba(255,255,255,.7);
+}
+
+/* subtle icon-style feel (optional future use) */
+.grid .glass-card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(127,214,204,.15),
+    transparent 60%
+  );
+  opacity:.6;
+  pointer-events:none;
+}
+
+/* =========================
    FOOTER
 ========================= */
 

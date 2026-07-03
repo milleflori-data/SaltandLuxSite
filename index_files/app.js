@@ -1,31 +1,40 @@
 // =========================
-// SALT & LUX — INTERACTION ENGINE
+// SALT & LUX — SPRINT 7+ BEHAVIOR ENGINE
 // =========================
 
 document.addEventListener("DOMContentLoaded", () => {
 
   // =========================
-  // 1. REVEAL SYSTEM
+  // STATE
   // =========================
 
-  const revealElements = document.querySelectorAll(".reveal");
+  let lastScrollY = window.scrollY;
+  let ticking = false;
 
-  const revealObserver = new IntersectionObserver((entries) => {
+  const nav = document.querySelector(".ribbon-nav");
+  const navLinks = document.querySelectorAll(".ribbon-btn");
+  const sections = document.querySelectorAll("section");
+
+  // =========================
+  // 1. REVEAL SYSTEM (OPTIMIZED)
+  // =========================
+
+  const revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target); // performance improvement
+        obs.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.15
-  });
+  }, { threshold: 0.15 });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  document.querySelectorAll(".reveal").forEach(el => {
+    revealObserver.observe(el);
+  });
 
 
   // =========================
-  // 2. SMOOTH SCROLL (SINGLE SOURCE OF TRUTH)
+  // 2. SMOOTH SCROLL (SINGLE SYSTEM)
   // =========================
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -44,49 +53,92 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // =========================
-  // 3. NAV SCROLL STATE + GLASS INTENSITY
+  // 3. ACTIVE SECTION DETECTION (ROBUST)
   // =========================
 
-  const nav = document.querySelector(".ribbon-nav");
-  const navLinks = document.querySelectorAll(".ribbon-btn");
-  const sections = document.querySelectorAll("section");
+  function getCurrentSection() {
+    let current = "";
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
+    const scrollPos = window.scrollY + window.innerHeight * 0.35;
 
-    // --- NAV BACKGROUND SHIFT ---
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const bottom = top + section.offsetHeight;
+
+      if (scrollPos >= top && scrollPos < bottom) {
+        current = section.id;
+      }
+    });
+
+    return current;
+  }
+
+
+  // =========================
+  // 4. NAV BEHAVIOR ENGINE
+  // =========================
+
+  function updateNav(scrollY) {
+
+    // --- direction detection ---
+    const scrollingDown = scrollY > lastScrollY;
+
+    // --- background intensity shift ---
     if (nav) {
-      if (scrollY > 50) {
-        nav.style.background = "rgba(255,255,255,.25)";
+      if (scrollY > 80) {
+        nav.style.background = "rgba(255,255,255,.28)";
+        nav.style.backdropFilter = "blur(20px)";
       } else {
         nav.style.background = "rgba(252,252,250,.55)";
+        nav.style.backdropFilter = "blur(12px)";
+      }
+
+      // --- auto-hide on scroll down ---
+      if (scrollingDown && scrollY > 200) {
+        nav.style.transform = "translateY(-110%)";
+      } else {
+        nav.style.transform = "translateY(0)";
       }
     }
 
-    // --- ACTIVE SECTION DETECTION ---
-    let currentSection = "";
-
-    sections.forEach(section => {
-      const top = section.offsetTop - 120;
-      const bottom = top + section.offsetHeight;
-
-      if (scrollY >= top && scrollY < bottom) {
-        currentSection = section.getAttribute("id");
-      }
-    });
+    // --- active link system ---
+    const activeSection = getCurrentSection();
 
     navLinks.forEach(link => {
       link.classList.remove("active");
 
-      if (link.getAttribute("href") === `#${currentSection}`) {
+      if (link.getAttribute("href") === `#${activeSection}`) {
         link.classList.add("active");
       }
     });
+
+    lastScrollY = scrollY;
+  }
+
+
+  // =========================
+  // 5. SCROLL ENGINE (THROTTLED VIA RAF)
+  // =========================
+
+  function onScroll() {
+    const scrollY = window.scrollY;
+
+    updateNav(scrollY);
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        onScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
   });
 
 
   // =========================
-  // 4. BEFORE / AFTER SLIDER
+  // 6. BEFORE / AFTER SLIDER
   // =========================
 
   const slider = document.querySelector(".slider");
@@ -100,13 +152,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // =========================
-  // 5. GLASS CARD MICRO-INTERACTION (DESKTOP ONLY)
+  // 7. GLASS CARD MICRO-INTERACTION (DESKTOP ONLY)
   // =========================
 
-  const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+  const isTouch = window.matchMedia("(pointer: coarse)").matches;
   const cards = document.querySelectorAll(".glass-card");
 
-  if (!isTouchDevice) {
+  if (!isTouch) {
     cards.forEach(card => {
 
       card.addEventListener("mousemove", (e) => {

@@ -272,3 +272,40 @@ body {
   opacity:1;
   transform:none;
 }
+
+.before-after {
+  max-width:900px;
+  margin:5rem auto;
+  padding:2rem;
+  text-align:center;
+}
+
+.ba-wrapper {
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.12);
+}
+
+.ba-wrapper img {
+  width:100%;
+  display:block;
+  user-select:none;
+}
+
+.after {
+  position:absolute;
+  top:0;
+  left:0;
+  width:50%;
+  height:100%;
+  overflow:hidden;
+}
+
+.slider {
+  width:100%;
+  margin-top:1rem;
+  accent-color:#7fd6cc;
+}

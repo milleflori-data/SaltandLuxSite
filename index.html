@@ -2,364 +2,107 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Salt &amp; Lux — Unmatched Cleaning Luxury</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<base href="/">
+<title>Salt & Lux — Luxury Cleaning Services</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --cream:#f5f2ec;--warm:#e8e3d8;--sand:#bdbaaf;--stone:#a29f94;
-  --umber:#6b6459;--bark:#4a4239;--white:#ffffff;
-  --jade:#2f6f66;--jade-deep:#1f4a44;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Jost',sans-serif;
-}
-html{scroll-behavior:smooth;font-size:17px}
-body{background:var(--cream);color:var(--umber);font-family:var(--sans);font-weight:300;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 3rem;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(189,186,175,0.4)}
-.nav-logo{display:flex;align-items:center;text-decoration:none}
-.nav-logo img{height:200px;width:auto;display:block;filter:drop-shadow(0 2px 6px rgba(74,66,57,0.18))}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:1.88rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color 0.25s}
-.nav-links a:hover{color:var(--umber)}
-section{min-height:100vh;display:flex;align-items:center}
-#hero{display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
-.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 4rem 6rem 5rem;position:relative;z-index:2}
-.hero-eyebrow{font-size:0.82rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);margin-bottom:1.6rem}
-.hero-title{font-family:var(--serif);font-size:clamp(3.4rem,6vw,6.2rem);font-weight:300;line-height:1.05;letter-spacing:-0.01em;color:var(--bark);text-transform:uppercase;margin-bottom:2rem}
-.hero-title em{font-style:italic;font-weight:300;color:var(--umber)}
-.hero-sub{font-size:1.08rem;font-weight:400;line-height:1.75;color:var(--stone);max-width:430px;margin-bottom:3rem}
-.btn{display:inline-block;padding:1.1rem 2.8rem;background:var(--umber);color:var(--cream);font-family:var(--sans);font-size:0.82rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;border:1px solid var(--umber);transition:background 0.3s,color 0.3s;width:fit-content}
-.btn:hover{background:transparent;color:var(--umber)}
-.btn-outline{background:transparent;color:var(--umber)}
-.btn-outline:hover{background:var(--umber);color:var(--cream)}
-.hero-right{position:relative;overflow:hidden;background:var(--warm)}
-.hero-img{width:100%;height:100%;min-height:100vh;object-fit:cover;display:block}
-.hero-placeholder{width:100%;height:100%;min-height:100vh;background:var(--warm);display:flex;align-items:center;justify-content:center;position:relative}
-.hero-placeholder::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(189,186,175,0.15) 40px,rgba(189,186,175,0.15) 41px)}
-.hero-seal{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;box-shadow:0 8px 28px rgba(31,74,68,0.35);z-index:3}
-.hero-seal img{width:100%;height:100%;display:block;border-radius:50%}
-.section-tag{font-size:0.8rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--sand);margin-bottom:1.2rem}
-.section-title{font-family:var(--serif);font-size:clamp(2.6rem,4.2vw,4.6rem);font-weight:300;line-height:1.05;text-transform:uppercase;color:var(--bark);margin-bottom:1.8rem}
-.section-body{font-size:1.06rem;font-weight:400;line-height:1.85;color:var(--stone);max-width:520px}
-.section-body strong{font-weight:500;color:var(--umber)}
-.ornament{display:block;width:40px;height:1px;background:var(--sand);margin:2rem 0}
-.img-panel{background:var(--warm);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.img-panel::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(189,186,175,0.1) 30px,rgba(189,186,175,0.1) 31px);pointer-events:none}
-.img-panel img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
-#commitment{background:var(--cream)}
-.commitment-inner{display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:100vh}
-.commitment-img{height:100%;min-height:100vh}
-.commitment-img img{width:100%;height:100%;object-fit:cover;display:block}
-.commitment-content{display:flex;flex-direction:column;justify-content:center;padding:6rem 5rem 6rem 4rem}
-.commitment-icon{width:52px;height:52px;margin-bottom:2rem;opacity:0.6}
-#services{background:var(--cream)}
-.services-inner{display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:100vh}
-.services-content{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 6rem 5rem}
-.services-images{display:grid;grid-template-rows:1fr 1fr;gap:2px;min-height:100vh}
-.services-images .img-panel{height:100%}
-.svc-item{border-left:2px solid var(--sand);padding-left:1.2rem;margin-bottom:1.4rem}
-.svc-label{font-size:0.9rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--umber);margin-bottom:0.35rem}
-.svc-text{font-size:0.98rem;color:var(--stone);line-height:1.6}
-#testimonials{background:var(--cream);flex-direction:column;justify-content:center}
-.testimonials-inner{width:100%;max-width:1300px;margin:0 auto;padding:8rem 5rem}
-.testimonials-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:5rem;align-items:end}
-.testimonials-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.tcard{background:var(--warm);padding:3rem;display:flex;flex-direction:column;justify-content:space-between}
-.tquote{font-family:var(--serif);font-size:1.5rem;font-weight:300;font-style:italic;line-height:1.65;color:var(--bark);margin-bottom:2rem}
-.tauthor{font-size:0.82rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--stone)}
-.stars{color:var(--sand);font-size:1.05rem;letter-spacing:0.1em;margin-bottom:1.2rem}
-.timg{height:320px;overflow:hidden}
-.timg img{width:100%;height:100%;object-fit:cover}
-#process{background:var(--bark);color:var(--cream);flex-direction:column;justify-content:center}
-.process-inner{width:100%;max-width:1300px;margin:0 auto;padding:8rem 5rem}
-#process .section-title{color:var(--cream)}
-#process .section-tag{color:var(--sand);opacity:.8}
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;margin-top:4rem}
-.pstep{border-top:1px solid rgba(189,186,175,0.3);padding-top:1.5rem}
-.pnum{font-family:var(--serif);font-size:3.2rem;font-weight:300;color:rgba(189,186,175,0.35);line-height:1;margin-bottom:1rem}
-.ptitle{font-size:0.88rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream);margin-bottom:0.8rem}
-.ptext{font-size:0.96rem;line-height:1.8;color:var(--stone)}
-.process-img-row{margin-top:4rem;height:280px;overflow:hidden;border-radius:2px}
-.process-img-row img{width:100%;height:100%;object-fit:cover;display:block}
-#booking{background:var(--umber);color:var(--cream);flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden}
-.booking-bg{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(245,242,236,0.04) 60px,rgba(245,242,236,0.04) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(245,242,236,0.04) 60px,rgba(245,242,236,0.04) 61px)}
-.booking-inner{position:relative;z-index:2;max-width:720px;padding:6rem 3rem}
-#booking .section-tag{color:rgba(245,242,236,0.55)}
-#booking .section-title{color:var(--cream)}
-#booking .section-body{color:rgba(245,242,236,0.75);max-width:100%;margin:0 auto 3rem}
-.btn-light{background:var(--cream);color:var(--umber);border-color:var(--cream)}
-.btn-light:hover{background:transparent;color:var(--cream)}
-#contact{background:var(--cream);flex-direction:column;justify-content:center}
-.contact-inner{width:100%;max-width:1300px;margin:0 auto;padding:8rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
-.contact-title{font-family:var(--serif);font-size:clamp(3.2rem,5.2vw,6.2rem);font-weight:300;text-transform:uppercase;line-height:1;color:var(--bark);margin-bottom:3rem}
-.cdetail{border-top:1px solid var(--warm);padding:1.5rem 0}
-.clabel{font-size:0.78rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--sand);margin-bottom:0.4rem}
-.cvalue{font-size:1.12rem;color:var(--umber)}
-.contact-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.contact-imgs .img-panel{height:280px}
-footer{background:var(--bark);color:var(--stone);padding:2.6rem 5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.86rem;letter-spacing:0.06em}
-.footer-brand{display:flex;align-items:center;gap:0.7rem}
-.footer-brand img{height:200px;width:auto;display:block}
-.footer-logo{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--cream);letter-spacing:0.04em}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease}
-.reveal.visible{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:0.15s}
-.reveal-delay-2{transition-delay:0.3s}
-.reveal-delay-3{transition-delay:0.45s}
-@media(max-width:900px){
-  html{font-size:16px}
-  nav{padding:1.2rem 1.5rem}
-  .nav-links{display:none}
-  .nav-logo img{height:200px}
-  #hero,.commitment-inner,.services-inner,.why-inner,.contact-inner{grid-template-columns:1fr}
-  .hero-left{padding:7rem 2rem 4rem}
-  .hero-right,.commitment-img{min-height:50vh}
-  .hero-seal{width:76px;height:76px;bottom:1.6rem}
-  .commitment-content,.services-content{padding:3rem 2rem}
-  .services-images{height:60vw;grid-template-rows:1fr;grid-template-columns:1fr 1fr}
-  .testimonials-inner,.process-inner,.contact-inner{padding:5rem 2rem}
-  .process-grid{grid-template-columns:1fr 1fr}
-  .testimonials-header,.testimonials-grid,.contact-imgs{grid-template-columns:1fr}
-  .contact-imgs .img-panel{height:200px}
-  footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem}
-}
-</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="index_files/styles.css">
+<script src="index_files/app.js" defer></script>
 </head>
+
 <body>
 
-<nav>
-  <a class="nav-logo" href="#hero">
-  <img src="index_files/logosaltluxnice.png" alt="Salt &amp; Lux">
-</a>
-  <ul class="nav-links">
-    <li><a href="#commitment">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#booking">Book</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<!-- NAVIGATION -->
+<header class="glass-nav">
+  <div class="nav-inner">
+    <a class="logo" href="#hero">Salt & Lux</a>
+
+    <nav class="nav-links">
+      <a href="#about" class="nav-pill">About</a>
+      <a href="#services" class="nav-pill">Services</a>
+      <a href="#reviews" class="nav-pill">Reviews</a>
+      <a href="#booking" class="nav-pill nav-pill--accent">Book</a>
+      <a href="#contact" class="nav-pill">Contact</a>
+    </nav>
+  </div>
+</header>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow reveal">Cheyenne, Wyoming</p>
-    <h1 class="hero-title reveal reveal-delay-1">
-      Experience<br><em>Unmatched</em><br>Cleaning<br>Luxury
+<section id="hero" class="section hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content reveal">
+    <h1>
+      Luxury Cleaning<br>
+      <span>Reimagined</span>
     </h1>
-    <p class="hero-sub reveal reveal-delay-2">
-      Offering meticulous cleaning services for your home and office with timeless elegance and sophistication.
+
+    <p>
+      Meticulous, elevated cleaning for homes that deserve clarity, calm, and brilliance.
     </p>
-    <a href="#booking" class="btn reveal reveal-delay-3">Book a Cleaning</a>
-  </div>
-  <div class="hero-right">
-    <img class="hero-img"
-      src="index_files/a305ba218d053ddb39e38bb0db29a9b0.png"
-      alt="Salt and Lux luxury cleaning"
-      onerror="this.parentElement.innerHTML='<div class=\'hero-placeholder\'><svg width=\'100\' height=\'100\' viewBox=\'0 0 80 80\' fill=\'none\'><circle cx=\'40\' cy=\'40\' r=\'36\' stroke=\'#bdbaaf\' stroke-width=\'1.5\'/><path d=\'M40 16C30 28 22 36 22 46C22 57 30 63 40 63C50 63 58 57 58 46C58 36 50 28 40 16Z\' stroke=\'#bdbaaf\' stroke-width=\'1.5\' fill=\'none\'/></svg></div>'">
-    <div class="hero-seal">
-      <img src="index_files/logosaltluxnice.png" alt="Salt &amp; Lux seal">
+
+    <div class="hero-actions">
+      <a href="#booking" class="btn-glass">Book Now</a>
+      <a href="#services" class="btn-ghost">Explore Services</a>
     </div>
   </div>
 </section>
 
-<!-- COMMITMENT -->
-<section id="commitment">
-  <div class="commitment-inner">
-    <div class="commitment-img img-panel">
-      <img src="index_files/7cf5da00b1f29e2c8b509e414c876e95.png" alt="Our commitment to excellence">
-    </div>
-    <div class="commitment-content">
-      <p class="section-tag reveal">Our Promise</p>
-      <!-- Inline SVG replaces the blob: URL -->
-      <svg class="commitment-icon reveal reveal-delay-1" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M26 4C14 4 6 14 6 26C6 38 14 48 26 48C34 48 44 42 46 28C47 22 44 10 36 6C32.4 4.4 29 4 26 4Z" stroke="#6b6459" stroke-width="1.4"/>
-        <path d="M26 48C26 36 20 24 14 16" stroke="#6b6459" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M26 32C30 26 38 20 46 18" stroke="#6b6459" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-      </svg>
-      <h2 class="section-title reveal reveal-delay-1">Our<br>Commitment<br>to<br>Excellence</h2>
-      <span class="ornament reveal reveal-delay-2"></span>
-      <p class="section-body reveal reveal-delay-2">
-        At Salt &amp; Lux, we pride ourselves on our <strong>meticulous service</strong> that transforms your space into a luxurious haven. Our attention to detail ensures every corner shines, reflecting our dedication to excellence in cleaning.
-      </p>
-      <a href="#contact" class="btn btn-outline reveal reveal-delay-3" style="margin-top:2rem;">Connect With Us</a>
-    </div>
+<!-- ABOUT -->
+<section id="about" class="section glass-section">
+  <div class="glass-card reveal">
+    <h2>Our Commitment</h2>
+    <p>
+      At Salt & Lux, we believe a clean space should feel like sunlight through glass—clear, calm, and effortless.
+    </p>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">
-  <div class="services-inner">
-    <div class="services-content">
-      <!-- Inline SVG replaces the blob: URL -->
-      <svg class="commitment-icon reveal" viewBox="0 0 58 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="6" y="10" width="46" height="36" rx="3" stroke="#6b6459" stroke-width="1.4"/>
-        <path d="M6 20L52 20" stroke="#6b6459" stroke-width="1.2"/>
-        <path d="M18 30L40 30M18 37L34 37" stroke="#6b6459" stroke-width="1.2" stroke-linecap="round"/>
-        <circle cx="29" cy="5" r="3" stroke="#6b6459" stroke-width="1.2"/>
-        <line x1="29" y1="8" x2="29" y2="10" stroke="#6b6459" stroke-width="1.2"/>
-      </svg>
-      <p class="section-tag reveal reveal-delay-1">What We Offer</p>
-      <h2 class="section-title reveal reveal-delay-1">Our<br>Services</h2>
-      <span class="ornament reveal reveal-delay-2"></span>
-      <p class="section-body reveal reveal-delay-2">
-        At Salt &amp; Lux, we provide <strong>comprehensive cleaning solutions</strong> tailored to elevate every space. Our services range from meticulous home cleaning to sophisticated office maintenance, ensuring a pristine environment that reflects your lifestyle and values.
-      </p>
-      <div style="margin-top:2.5rem">
-        <div class="svc-item reveal reveal-delay-2">
-          <div class="svc-label">Residential Cleaning</div>
-          <div class="svc-text">Deep cleans, detailing, recurring maintenance, move-in/move-out.</div>
-        </div>
-        <div class="svc-item reveal reveal-delay-3">
-          <div class="svc-label">Commercial Cleaning</div>
-          <div class="svc-text">Offices, boutiques, and professional spaces.</div>
-        </div>
-        <div class="svc-item reveal reveal-delay-3">
-          <div class="svc-label">Specialty Services</div>
-          <div class="svc-text">Post-construction, event prep, luxury detail packages.</div>
-        </div>
-        <div class="svc-item reveal reveal-delay-3">
-           <div class="svc-label">Home Assistant</div>
-           <div class="svc-text">Organization, styling, sorting, decluttering.</div>
-        </div>
-      </div>
-    </div>
-    <div class="services-images">
-      <div class="img-panel">
-        <img src="index_files/gleaming.jpg" alt="Cleaning service">
-      </div>
-      <div class="img-panel">
-        <img src="index_files/details.jpg" alt="Cleaning service detail">
-      </div>
-    </div>
+<section id="services" class="section">
+  <h2 class="section-title reveal">Services</h2>
+
+  <div class="grid">
+    <div class="glass-card reveal">Residential Cleaning</div>
+    <div class="glass-card reveal">Commercial Spaces</div>
+    <div class="glass-card reveal">Deep Cleaning</div>
+    <div class="glass-card reveal">Home Organization</div>
   </div>
 </section>
 
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="process-inner">
-    <p class="section-tag reveal">How It Works</p>
-    <h2 class="section-title reveal reveal-delay-1">Our Process</h2>
-    <p class="section-body reveal reveal-delay-2" style="color:var(--stone)">
-      At Salt &amp; Lux, we ensure your space achieves the highest level of cleanliness, delivering a serene environment for your home or office.
-    </p>
-    <div class="process-grid">
-      <div class="pstep reveal reveal-delay-1">
-        <div class="pnum">01</div>
-        <div class="ptitle">Consultation</div>
-        <div class="ptext">We assess your space and tailor a custom cleaning plan to your exact needs.</div>
-      </div>
-      <div class="pstep reveal reveal-delay-2">
-        <div class="pnum">02</div>
-        <div class="ptitle">Scheduling</div>
-        <div class="ptext">Choose a time that suits your schedule — one-time or recurring.</div>
-      </div>
-      <div class="pstep reveal reveal-delay-2">
-        <div class="pnum">03</div>
-        <div class="ptitle">Deep Clean</div>
-        <div class="ptext">Our trained team arrives fully equipped and executes to luxury standards.</div>
-      </div>
-      <div class="pstep reveal reveal-delay-3">
-        <div class="pnum">04</div>
-        <div class="ptitle">Inspection</div>
-        <div class="ptext">Final walkthrough ensures every corner meets our exacting quality bar.</div>
-      </div>
-    </div>
-    <div class="process-img-row img-panel reveal" style="background:rgba(245,242,236,0.06);border:1px solid rgba(189,186,175,0.15)">
-      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1">
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-          <path d="M10 50Q20 30 30 35Q40 40 50 20" stroke="rgba(189,186,175,0.5)" stroke-width="1.5" fill="none"/>
-          <circle cx="30" cy="35" r="3" fill="rgba(189,186,175,0.4)"/>
-          <circle cx="10" cy="50" r="2" fill="rgba(189,186,175,0.3)"/>
-          <circle cx="50" cy="20" r="2" fill="rgba(189,186,175,0.3)"/>
-        </svg>
-      </div>
-    </div>
+<!-- REVIEWS -->
+<section id="reviews" class="section glass-section">
+  <div class="glass-card reveal">
+    <h2>What Clients Say</h2>
+    <p>“Absolutely spotless. Feels like a luxury hotel every time.”</p>
   </div>
 </section>
 
 <!-- BOOKING -->
-<section id="booking">
-  <div class="booking-bg"></div>
-  <div class="booking-inner">
-    <p class="section-tag reveal">Ready to Begin</p>
-    <h2 class="section-title reveal reveal-delay-1">Book A<br>Cleaning</h2>
-    <span class="ornament reveal reveal-delay-2" style="background:rgba(245,242,236,0.3);margin:1.5rem auto"></span>
-    <p class="section-body reveal reveal-delay-2">
-      Experience the timeless elegance of Salt &amp; Lux, where <strong style="color:var(--cream)">luxury cleaning</strong> meets meticulous attention to detail, ensuring every nook of your home or office reflects sophistication and comfort.
-    </p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem">
-      <a href="mailto:saltandlux@proton.me" class="btn btn-light reveal reveal-delay-3">Book via Email</a>
-      <a href="tel:" class="btn reveal reveal-delay-3" style="border-color:rgba(245,242,236,0.4);color:var(--cream)">Call Us</a>
-    </div>
+<section id="booking" class="section booking">
+  <div class="glass-card glass-cta reveal">
+    <h2>Ready for a Cleaner Home?</h2>
+    <p>Experience Salt & Lux luxury cleaning services today.</p>
+    <a href="mailto:saltandlux@proton.me" class="btn-glass">Book via Email</a>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <div>
-      <h2 class="contact-title reveal">Get<br>in<br>Touch</h2>
-      <div>
-        <div class="cdetail reveal reveal-delay-1">
-          <div class="clabel">Address</div>
-          <div class="cvalue">Cheyenne, WY 82001</div>
-        </div>
-        <div class="cdetail reveal reveal-delay-2">
-          <div class="clabel">Email</div>
-          <div class="cvalue"><a href="mailto:saltandlux@proton.me" style="color:var(--umber);text-decoration:none">saltandlux@proton.me</a></div>
-        </div>
-        <div class="cdetail reveal reveal-delay-3">
-          <div class="clabel">Service Area</div>
-          <div class="cvalue">Cheyenne &amp; surrounding communities</div>
-        </div>
-      </div>
-    </div>
-    <div class="contact-imgs">
-      <div class="img-panel" style="height:280px;background:linear-gradient(135deg,#e8e3d8,#d4cfc4)">
-        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;position:relative;z-index:1">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <rect x="8" y="14" width="32" height="22" rx="2" stroke="#a29f94" stroke-width="1.2"/>
-            <path d="M8 20L24 30L40 20" stroke="#a29f94" stroke-width="1.2" fill="none"/>
-          </svg>
-        </div>
-      </div>
-      <div class="img-panel" style="height:280px;background:linear-gradient(315deg,#ddd8ce,#c8c3b8)">
-        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;position:relative;z-index:1">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <path d="M24 8C14 8 8 16 8 24C8 36 24 42 24 42C24 42 40 36 40 24C40 16 34 8 24 8Z" stroke="#a29f94" stroke-width="1.2"/>
-            <circle cx="24" cy="22" r="5" stroke="#a29f94" stroke-width="1.2"/>
-          </svg>
-        </div>
-      </div>
-    </div>
+<section id="contact" class="section glass-section">
+  <div class="glass-card reveal">
+    <h2>Contact</h2>
+    <p>Cheyenne, Wyoming</p>
+    <p>saltandlux@proton.me</p>
   </div>
 </section>
 
-<footer>
-  <div class="footer-brand">
-    <img src="index_files/logosaltluxnice.png" alt="Salt &amp; Lux">
-    <span class="footer-logo">Salt &amp; Lux</span>
-  </div>
-  <span>© 2026 Salt &amp; Lux LLC · Cheyenne, WY</span>
-  <a href="mailto:saltandlux@proton.me" style="color:var(--stone);text-decoration:none">saltandlux@proton.me</a>
+<footer class="footer">
+  <p>© 2026 Salt & Lux</p>
 </footer>
 
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-window.addEventListener('load', () => {
-  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
-});
-</script>
 </body>
 </html>

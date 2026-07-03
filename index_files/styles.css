@@ -85,6 +85,11 @@ body {
   overflow:hidden;
 }
 
+.ribbon-btn.active {
+  background: rgba(127,214,204,.25);
+  box-shadow: 0 0 0 1px rgba(127,214,204,.4);
+}
+
 /* light sweep */
 .ribbon-btn::before {
   content:"";

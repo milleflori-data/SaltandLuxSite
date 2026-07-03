@@ -12,6 +12,12 @@
 
   --glass: rgba(255,255,255,.18);
   --glass-border: rgba(255,255,255,.35);
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
 }
 
 * {
@@ -192,7 +198,8 @@ body {
   background: radial-gradient(circle at 30% 20%,
     rgba(127,214,204,.35),
     transparent 60%);
-  animation: driftLight 12s ease-in-out infinite;
+  opacity: 0.6;
+  animation: driftLight 20s ease-in-out infinite;
   filter: blur(40px);
   z-index: 1; 
 }
@@ -212,9 +219,9 @@ body {
     rgba(255,255,255,.25),
     rgba(127,214,204,.15),
     transparent);
-
-  backdrop-filter: blur(20px);
-  animation: floatOrb 10s ease-in-out infinite;
+  opacity: 0.5;
+  backdrop-filter: blur(25px);
+  animation: floatOrb 14s ease-in-out infinite;
 }
 
 @keyframes driftLight {
@@ -259,7 +266,7 @@ body {
 ========================= */
 
 .section {
-  padding:6rem 2rem;
+  padding:var(--space-xl) var(--space-md);
 }
 
 .glass-section {
@@ -272,20 +279,13 @@ body {
 ========================= */
 
 .glass-card {
-  position:relative;
-  overflow:hidden;
-
-  background: rgba(255,255,255,.18);
-  border:1px solid rgba(255,255,255,.4);
-  border-radius:20px;
-
-  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.3);
+  backdrop-filter: blur(16px);
 
   box-shadow:
-    0 20px 60px rgba(0,0,0,.08),
-    inset 0 1px 0 rgba(255,255,255,.6);
-
-  transition:.4s ease;
+    0 18px 50px rgba(0,0,0,.06),
+    inset 0 1px 0 rgba(255,255,255,.5);
 }
 
 .glass-card:hover {
@@ -477,4 +477,30 @@ body {
   transform:scale(1.08);
   box-shadow:
     0 25px 60px rgba(127,214,204,.45);
+}
+
+@media (max-width: 768px) {
+
+  .hero-glass-orb {
+    display: none;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ribbon-nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.8rem;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+  }
 }

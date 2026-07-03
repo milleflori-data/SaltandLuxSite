@@ -43,58 +43,65 @@ body {
 
 .ribbon-nav {
   display:flex;
-  gap:1rem;
+  gap:.9rem;
   justify-content:center;
-  padding:1rem;
-  position:relative;
+  padding:1.2rem;
+  position:fixed;
+  top:0;
+  width:100%;
   z-index:1000;
+  backdrop-filter: blur(18px);
+  background: rgba(252,252,250,.55);
+  border-bottom:1px solid rgba(255,255,255,.4);
 }
 
 .ribbon-btn {
   position:relative;
-  padding:.7rem 1.4rem;
-  border-radius:14px;
+  padding:.65rem 1.2rem;
+  border-radius:999px;
 
   background: linear-gradient(135deg,
-    rgba(255,255,255,.25),
-    rgba(127,214,204,.18)
+    rgba(255,255,255,.35),
+    rgba(223,248,242,.25)
   );
 
-  border:1px solid rgba(255,255,255,.35);
-  backdrop-filter: blur(18px);
-
+  border:1px solid rgba(255,255,255,.5);
   color:#26343a;
   text-decoration:none;
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.08),
-    inset 0 1px 0 rgba(255,255,255,.4);
+  backdrop-filter: blur(16px);
 
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.06),
+    inset 0 1px 0 rgba(255,255,255,.6);
+
+  transition:.35s ease;
   overflow:hidden;
-  transition:.4s ease;
 }
 
+/* light sweep */
 .ribbon-btn::before {
   content:"";
   position:absolute;
   top:0;
-  left:-120%;
+  left:-140%;
   width:120%;
   height:100%;
   background: linear-gradient(90deg,
     transparent,
-    rgba(255,255,255,.6),
+    rgba(255,255,255,.65),
     transparent
   );
   transition:.8s ease;
 }
 
 .ribbon-btn:hover {
-  transform: translateY(-4px) scale(1.03);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
 }
 
 .ribbon-btn:hover::before {
-  left:120%;
+  left:140%;
 }
 
 .ribbon-accent {

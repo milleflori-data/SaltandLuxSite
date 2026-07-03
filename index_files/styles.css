@@ -304,17 +304,19 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255,255,255,.55),
+    rgba(255,255,255,.35),
     transparent
   );
 
   transform: skewX(-20deg);
-  animation: shimmer 7s infinite;
-}
 
+  animation: shimmer 12s ease-in-out infinite;
+  opacity: 0.35;
+}
 @keyframes shimmer {
-  0% { left:-150%; }
-  100% { left:150%; }
+  0% { left:-150%; opacity:0; }
+  50% { opacity:0.4; }
+  100% { left:150%; opacity:0; }
 }
 
 /* =========================

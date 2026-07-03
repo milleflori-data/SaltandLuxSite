@@ -41,6 +41,65 @@ body {
   border-bottom:1px solid var(--glass-border);
 }
 
+.ribbon-nav {
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  padding:1rem;
+  position:relative;
+  z-index:1000;
+}
+
+.ribbon-btn {
+  position:relative;
+  padding:.7rem 1.4rem;
+  border-radius:14px;
+
+  background: linear-gradient(135deg,
+    rgba(255,255,255,.25),
+    rgba(127,214,204,.18)
+  );
+
+  border:1px solid rgba(255,255,255,.35);
+  backdrop-filter: blur(18px);
+
+  color:#26343a;
+  text-decoration:none;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.4);
+
+  overflow:hidden;
+  transition:.4s ease;
+}
+
+.ribbon-btn::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,.6),
+    transparent
+  );
+  transition:.8s ease;
+}
+
+.ribbon-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+.ribbon-btn:hover::before {
+  left:120%;
+}
+
+.ribbon-accent {
+  background: linear-gradient(135deg,#7fd6cc,#dff8f2);
+}
 .nav-inner {
   display:flex;
   justify-content:space-between;

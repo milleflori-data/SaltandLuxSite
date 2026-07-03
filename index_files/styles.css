@@ -341,3 +341,40 @@ body {
   margin-top:1rem;
   accent-color:#7fd6cc;
 }
+
+.sticky-book {
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:64px;
+  height:64px;
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:.75rem;
+  color:#26343a;
+  text-decoration:none;
+
+  background: radial-gradient(circle,
+    rgba(127,214,204,.95),
+    rgba(223,248,242,.7)
+  );
+
+  box-shadow:
+    0 15px 40px rgba(127,214,204,.35),
+    inset 0 2px 0 rgba(255,255,255,.6);
+
+  backdrop-filter: blur(12px);
+
+  transition:.3s ease;
+  z-index:999;
+}
+
+.sticky-book:hover {
+  transform:scale(1.08);
+  box-shadow:
+    0 25px 60px rgba(127,214,204,.45);
+}
